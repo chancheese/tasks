@@ -3,6 +3,7 @@ package se.edu.streamdemo;
 import se.edu.streamdemo.data.Datamanager;
 import se.edu.streamdemo.task.Deadline;
 import se.edu.streamdemo.task.Task;
+import se.edu.streamdemo.task.TaskComparator;
 
 import java.util.ArrayList;
 
@@ -18,9 +19,13 @@ public class Main {
 
         System.out.println("Printing deadlines ...");
         printDeadlines(tasksData);
+        printDeadlinesUsingStreams(tasksData);
+
+        System.out.println("Filtering tasks using streams ...");
 
         System.out.println("Total number of deadlines: " + countDeadlines(tasksData));
-
+        ArrayList<Task> filteredList = filterTasksByString(tasksData, "10");
+        System.out.println(filteredList);
     }
 
     private static int countDeadlines(ArrayList<Task> tasksData) {
